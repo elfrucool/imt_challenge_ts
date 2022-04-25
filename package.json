@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/elfrucool/imt_challenge_ts/issues"
   },
-  "homepage": "https://github.com/elfrucool/imt_challenge_ts#readme"
+  "homepage": "https://github.com/elfrucool/imt_challenge_ts#readme",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
 }
