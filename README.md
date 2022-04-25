@@ -48,5 +48,5 @@ $ npm test
 
 ```sh
 $ npm install
-$ npm run program <url> <file> [bandwidth]
+$ npm start -- <url> <file> [bandwidth]
 ```
