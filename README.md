@@ -1,4 +1,4 @@
-# CODE CHALLENGE: Computing hash Function
+# CODE CHALLENGE: Computing hash Function (Typescript version)
 
 ## The Use Case
 
