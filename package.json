@@ -31,6 +31,9 @@
   },
   "homepage": "https://github.com/elfrucool/imt_challenge_ts#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
     "typescript": "^4.6.3"
   }
 }
