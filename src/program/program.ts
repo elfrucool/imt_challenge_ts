@@ -1,4 +1,5 @@
 import { writeFile } from "fs"
+import { formatCliError, usage } from "../options/output"
 import { mkCollectingSink } from "../hashing/hash"
 import { CliError, CliOptions, cliOptionsMatch, parseCliOptions } from "../options/options"
 import * as myProcess from "../process/process"
@@ -9,7 +10,10 @@ export function program(): void {
     const args:string[] = process.argv.slice(2)
     const cliOptionsResult: Either<CliError, CliOptions> = parseCliOptions(args)
     eitherMatch(
-        (error:CliError) => console.error(`got error`, error),
+        (error:CliError) => {
+            console.error(`Invalid arguments: `, formatCliError(error))
+            console.info(usage())
+        },
         (cliOptions:CliOptions) =>
             fetchAndRun(cliOptions)
                 .catch(reason => console.error(`got error`, reason)),
