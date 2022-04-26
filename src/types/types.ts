@@ -5,7 +5,7 @@
  * V - the collected result type
  */
 export interface CollectingSink<T, V> {
-    write(t:T): void | Promise<void>
+    write(t:T): Promise<void>
     getCollectedResult(): V
 }
 

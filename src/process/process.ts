@@ -26,7 +26,8 @@ export function process(sink: CollectingSink<Uint8Array, number[]>): (x:Reader<U
             const readResult = await reader.read()
 
             if (readResult.value !== undefined && readResult.value !== null) {
-                sink.write(readResult.value)
+                console.log(`writing ${readResult.value.length} to sink`)
+                await sink.write(readResult.value)
             }
 
             if (readResult.done) {

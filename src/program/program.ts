@@ -5,6 +5,7 @@ import { CliError, CliOptions, cliOptionsMatch, parseCliOptions } from "../optio
 import * as myProcess from "../process/process"
 import { mkThrottlingSink } from "../support/throttling"
 import { CollectingSink, Either, eitherMatch, Reader, toBytesPerSecond } from "../types/types"
+import { getReader, fetch } from "../net/net"
 
 export function program(): void {
     const args:string[] = process.argv.slice(2)
@@ -22,20 +23,14 @@ export function program(): void {
 }
 
 async function fetchAndRun(options: CliOptions): Promise<void> {
-    const response: Response = await fetch(options.url)
-    const body = response.body
-    const reader: Reader<Uint8Array> = getReader(body)
+    console.info(`running program with options:`, options)
+    const response: NodeJS.ReadableStream = await fetch(options.url)
+    const reader: Reader<Uint8Array> = getReader(response)
     const sink: CollectingSink<Uint8Array, number[]> = makeSink(options)
     const hash = await myProcess.process(sink)(reader)
     const hashAsHex = Buffer.from(hash).toString('hex')
     console.log("hash:", hashAsHex)
     writeHashIntoFile(options, hashAsHex)
-}
-
-function getReader(body: ReadableStream<Uint8Array> | null): Reader<Uint8Array> {
-    return body != null
-        ? body.getReader()
-        : {read: async () => ({done: true})}
 }
 
 function makeSink(options: CliOptions): CollectingSink<Uint8Array, number[]> {
@@ -54,7 +49,7 @@ function writeHashIntoFile(options: CliOptions, hashAsHex: string) {
 function handleError(err: NodeJS.ErrnoException | null) {
     if (err === null || err === undefined) {
         console.info("File saved.")
+    } else {
+        console.error("Error when writing file: ", err)
     }
-
-    console.error("Error when writing file: ", err)
 }
