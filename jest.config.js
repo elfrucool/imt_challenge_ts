@@ -1,5 +1,4 @@
 module.exports = {
-    moduleFileExtensions: ["ts"],
     preset: 'ts-jest',
     setupFiles: ['dotenv/config'],
     testEnvironment: 'node',
