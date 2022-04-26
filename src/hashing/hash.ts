@@ -15,7 +15,7 @@ export function hash(buffer:number[], b:number):number[] {
 export function mkCollectingSink(): CollectingSink<Uint8Array, number[]> {
     const buffer:number[] = Array(8).fill(0)
     return {
-        write: (chunk: Uint8Array) => Promise.resolve(chunk.forEach(n => hash(buffer, n))),
+        write: async (chunk: Uint8Array) => chunk.forEach(n => hash(buffer, n)),
         getCollectedResult: () => buffer
     }
 }

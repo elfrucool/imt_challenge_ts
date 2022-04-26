@@ -6,7 +6,7 @@ import { process } from "./process"
 describe('process should iterate over all provided material', () => {
     it('on empty reader should return 0s', async () => {
         const emptyReader: Reader<Uint8Array> = {
-            read: () => Promise.resolve({done: true, value: undefined})
+            read: async () => ({done: true })
         }
 
         const result:number[] = await (process(mkCollectingSink())(emptyReader))
@@ -14,12 +14,12 @@ describe('process should iterate over all provided material', () => {
         expect(result).toEqual(Array(8).fill(0))
     })
 
-    it('non empty reader should iterate', async () => {
+    it('when non empty reader should read', async () => {
         let done = false
         const singleChunkReader: Reader<Uint8Array> = {
             read: async () => {
                 if (done) {
-                    return {done: true, value: undefined}
+                    return { done: true }
                 }
 
                 done = true
@@ -33,12 +33,12 @@ describe('process should iterate over all provided material', () => {
         expect(result).toEqual([24, 108, 90, 204, 81, 189, 102, 126])
     })
 
-    it('should iterate all times until done', async () => {
+    it('when non empty should iterate all times until done', async () => {
         let remainingCalls = 3
         const remaningReader: Reader<Uint8Array> = {
             read: async () => {
                 if (remainingCalls <= 0) {
-                    return {done: true, value: undefined}
+                    return {done: true}
                 }
 
                 remainingCalls--;
