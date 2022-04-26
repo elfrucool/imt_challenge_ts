@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "Given a URL, a file name and optioally a bandwith spec, it fetches the file from the url, calculates a hash with a given algorithm, and stores the hash signature as HEX string on the given filename. If the bandwidth arg is given, the program limits its download bandwidth.",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
