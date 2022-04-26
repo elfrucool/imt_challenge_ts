@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "module": "esnext",
+    "allowJs": false,
+    "module": "commonjs",
     "moduleResolution": "Node",
     "target": "esnext",
     "resolveJsonModule": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "baseUrl": "src"
-  }
+    "baseUrl": "./src",
+    "strict": true,
+    "skipLibCheck": true,
+    "rootDir": "./src"
+  },
+  "include": [ "src/**/*" ],
+  "exclude": [ "node_modules", "**/*.spec.ts", "**/*.test.ts" ]
 }

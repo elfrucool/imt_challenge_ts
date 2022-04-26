@@ -20,12 +20,18 @@ export function program(): void {
 async function fetchAndRun(options: CliOptions): Promise<void> {
     const response: Response = await fetch(options.url)
     const body = response.body
-    const reader: Reader<Uint8Array> = body.getReader()
+    const reader: Reader<Uint8Array> = getReader(body)
     const sink: CollectingSink<Uint8Array, number[]> = makeSink(options)
     const hash = await myProcess.process(sink)(reader)
     const hashAsHex = Buffer.from(hash).toString('hex')
     console.log("hash:", hashAsHex)
     writeHashIntoFile(options, hashAsHex)
+}
+
+function getReader(body: ReadableStream<Uint8Array> | null): Reader<Uint8Array> {
+    return body != null
+        ? body.getReader()
+        : {read: async () => ({done: true})}
 }
 
 function makeSink(options: CliOptions): CollectingSink<Uint8Array, number[]> {

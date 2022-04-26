@@ -37,5 +37,7 @@ export function process(sink: CollectingSink<Uint8Array, number[]>): (x:Reader<U
             // but on JS/TS, tail-call optimization is not supported
             // and we are assuming reduced resources environment
         } while(alwaysTrue)
+
+        return sink.getCollectedResult()
     }
 }
