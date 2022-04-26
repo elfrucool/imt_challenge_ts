@@ -1,18 +1,3 @@
-type User = {
-    name: string;
-    age: number
-}
+import { program } from "./src/program/program";
 
-function isAdult(user: User): boolean {
-    return user.age >= 18
-}
-
-const justine: User = {
-    name: "Justine",
-    age: 23
-}
-
-const isJustineAnAdult: boolean = isAdult(justine)
-
-console.log(justine)
-console.log(`isJustineAnAdult: ${isJustineAnAdult}`)
+program()
