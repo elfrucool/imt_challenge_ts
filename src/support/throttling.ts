@@ -5,6 +5,9 @@ export const mkThrottlingSink: (bandWidth: BandWidthInBytesPerSecond)
                             => CollectingSink<Uint8Array, number[]>
     = bandWidth => innerSink => {
         const bytesPerSecond = bandWidth.bytesPerSecond
+        // implementation does not do any sort of concurrency
+        // when reading the response body
+        // so it's safe to have a mutable variable here
         let bytesRead = 0
         return {
             write: async (chunk:Uint8Array) => {
