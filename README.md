@@ -60,3 +60,4 @@ $ npm start -- <url> <file> [bandwidth]
 ## Known Issues
 
 - [issue 1 - Throttling mechanism is not yet working properly](https://github.com/elfrucool/imt_challenge_ts/issues/1)
+- [issue 2 - Inconsistent fetching](https://github.com/elfrucool/imt_challenge_ts/issues/2)
