@@ -2,8 +2,9 @@
   "compilerOptions": {
     "allowJs": true,
     "module": "esnext",
-    "resolveJsonModule": true,
+    "moduleResolution": "Node",
     "target": "esnext",
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true
