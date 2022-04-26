@@ -8,7 +8,7 @@
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
     "build": "npx tsc --outDir build",
-    "start": "node build/index.js",
+    "start": "node build/src/index.js",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "clean": "rm index.js"
