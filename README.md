@@ -57,6 +57,6 @@ $ npm install
 $ npm start -- <url> <file> [bandwidth]
 ```
 
-## Limitations
+## Known Issues
 
-Throttling mechanism is not yet working properly
+- [issue 1 - Throttling mechanism is not yet working properly](https://github.com/elfrucool/imt_challenge_ts/issues/1)
