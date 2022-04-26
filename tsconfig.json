@@ -5,6 +5,7 @@
     "resolveJsonModule": true,
     "target": "esnext",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true
   }
 }
