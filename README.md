@@ -56,3 +56,7 @@ $ npm test
 $ npm install
 $ npm start -- <url> <file> [bandwidth]
 ```
+
+## Limitations
+
+Throttling mechanism is not yet working properly
