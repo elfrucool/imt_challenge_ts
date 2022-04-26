@@ -7,7 +7,8 @@
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
     "start": "npx tsc index.ts && node index.js",
-    "test": "node test.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
     "clean": "rm index.js"
   },
   "repository": {
@@ -43,5 +44,9 @@
     "prettier": "^2.6.2",
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.27",
+    "dotenv": "^16.0.0"
   }
 }
