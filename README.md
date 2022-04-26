@@ -38,6 +38,12 @@
 >
 > Do not put the file in memory or disk, assume it may be bigger than available resources.
 
+## Requirements
+
+- Node v14.x:
+
+  If you are using [`nvm`](https://github.com/nvm-sh/nvm); you can enable it by issuing `nvm use` (see [`.nvmrc`](./.nvmrc) file)
+
 ## How to test
 
 ```sh
